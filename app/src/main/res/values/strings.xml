@@ -10,5 +10,12 @@
 
     <string name="sign_up">Sign Up</string>
     <string name="forgot_passowrd">Forgot passowrd?</string>
+    <string name="create_account">Create Account</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="full_name">Full Name</string>
+    <string name="please_fill_the_inputs_below_here">Please fill the inputs below here</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="register">Register</string>
+    <string name="sign_in">Sign In</string>
 
 </resources>
