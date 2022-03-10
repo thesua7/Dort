@@ -1,6 +1,6 @@
 package si.nsu.dort;
 
-import androidx.appcompat.app.AlertDialog;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,12 +10,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class RegisterActivity extends AppCompatActivity {
 
     EditText full_name,e_mail,pwd,con_pass;
     Button register,sign_in;
+    TextView tvs;
 
     DBhelper db;
     @Override
@@ -29,6 +31,8 @@ public class RegisterActivity extends AppCompatActivity {
         con_pass = findViewById(R.id.con_password);
         register = findViewById(R.id.btn_signup);
         sign_in = findViewById(R.id.btn_signin);
+        db= new DBhelper(this);
+        tvs = findViewById(R.id.tv);
 
         sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,14 +51,18 @@ public class RegisterActivity extends AppCompatActivity {
             String pass = pwd.getText().toString();
             String c_pass = con_pass.getText().toString();
 
+
+            //tvs.setText(c_pass);
+
             if(TextUtils.isEmpty(name)||TextUtils.isEmpty(mail)||TextUtils.isEmpty(pass)||TextUtils.isEmpty(c_pass)){
+
                 Toast.makeText(RegisterActivity.this,"All fields required",Toast.LENGTH_SHORT).show();
             }
+
             else if(pass.equals(c_pass)){
-                boolean check_email = db.CheckEmail(mail);
-                Log.d("YourTag", "ok");
+                Boolean check_email = db.checkemail(mail);
                 if(!check_email){
-                    boolean insert = db.insertData(mail,name,pass);
+                    Boolean insert = db.insertData(mail,name,pass);
                     if(insert){
                         Toast.makeText(RegisterActivity.this,"Registered",Toast.LENGTH_SHORT).show();
                     }
