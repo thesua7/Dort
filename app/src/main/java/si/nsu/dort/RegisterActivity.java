@@ -13,11 +13,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
+
 public class RegisterActivity extends AppCompatActivity {
 
     EditText full_name,e_mail,pwd,con_pass;
     Button register,sign_in;
     TextView tvs;
+    String subString="@northsouth.edu";
 
     DBhelper db;
     @Override
@@ -32,7 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
         register = findViewById(R.id.btn_signup);
         sign_in = findViewById(R.id.btn_signin);
         db= new DBhelper(this);
-        tvs = findViewById(R.id.tv);//for test
+        //tvs = findViewById(R.id.tv);//for test
 
         sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,17 +62,30 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(RegisterActivity.this,"All fields required",Toast.LENGTH_SHORT).show();
             }
 
-
-            else if(pass.equals(c_pass)){
+            else if(pass.length()>=6){
+                if(!mail.contains(subString))
+                {
+                     Toast.makeText(RegisterActivity.this,"Use NSU Mail",Toast.LENGTH_SHORT).show();
+                }
+                else if(pass.equals(c_pass)){
+                String bcryptHashString= BCrypt.withDefaults().hashToString(12,pass.toCharArray());
                 Boolean check_email = db.checkemail(mail);
                 if(!check_email){
-                    Boolean insert = db.insertData(mail,name,pass);
+                    Boolean insert = db.insertData(mail,name,bcryptHashString);
                     if(insert){
                         Toast.makeText(RegisterActivity.this,"Registered",Toast.LENGTH_SHORT).show();
                     }
                 }
 
+            } }
+            else
+            {
+                Toast.makeText(RegisterActivity.this,"Must containt 6 chars",Toast.LENGTH_SHORT).show();
             }
+
+
+
+
 
             }
         });
