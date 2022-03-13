@@ -32,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
         register = findViewById(R.id.btn_signup);
         sign_in = findViewById(R.id.btn_signin);
         db= new DBhelper(this);
-        tvs = findViewById(R.id.tv);
+        tvs = findViewById(R.id.tv);//for test
 
         sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 Toast.makeText(RegisterActivity.this,"All fields required",Toast.LENGTH_SHORT).show();
             }
+
 
             else if(pass.equals(c_pass)){
                 Boolean check_email = db.checkemail(mail);
