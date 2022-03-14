@@ -20,7 +20,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText full_name,e_mail,pwd,con_pass;
     Button register,sign_in;
     TextView tvs;
-    String subString="@northsouth.edu";
+    boolean retValue;
 
     DBhelper db;
     @Override
@@ -63,7 +63,8 @@ public class RegisterActivity extends AppCompatActivity {
             }
 
             else if(pass.length()>=6){
-                if(!mail.contains(subString))
+                retValue=mail.endsWith("@northsouth.edu");
+                if(!retValue)
                 {
                      Toast.makeText(RegisterActivity.this,"Use NSU Mail",Toast.LENGTH_SHORT).show();
                 }
@@ -76,7 +77,10 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(RegisterActivity.this,"Registered",Toast.LENGTH_SHORT).show();
                     }
                 }
-
+                else
+                {
+                    Toast.makeText(RegisterActivity.this,"Mail already in use",Toast.LENGTH_SHORT).show();
+                }
             } }
             else
             {
