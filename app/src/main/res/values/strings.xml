@@ -18,5 +18,13 @@
     <string name="already_have_an_account">Already have an account?</string>
     <string name="full_name">Full Name</string>
     <string name="textview">TextView</string>
+    <string name="profile">profile</string>
+    <string name="string_profile">profile</string>
+    <string name="topics">Topics</string>
+
+    <string name="todo">TODO</string>
+    <string name="okokok">OKOKOK</string>
+    <string name="match">Match</string>
+    <string name="not">Not</string>
 
 </resources>

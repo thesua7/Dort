@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import at.favre.lib.crypto.bcrypt.BCrypt;
+//import at.favre.lib.crypto.bcrypt.BCrypt;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -69,10 +69,10 @@ public class RegisterActivity extends AppCompatActivity {
                      Toast.makeText(RegisterActivity.this,"Use NSU Mail",Toast.LENGTH_SHORT).show();
                 }
                 else if(pass.equals(c_pass)){
-                String bcryptHashString= BCrypt.withDefaults().hashToString(12,pass.toCharArray());
+               // String bcryptHashString= BCrypt.withDefaults().hashToString(12,pass.toCharArray());
                 Boolean check_email = db.checkemail(mail);
                 if(!check_email){
-                    Boolean insert = db.insertData(mail,name,bcryptHashString);
+                    Boolean insert = db.insertData(mail,name,pass);
                     if(insert){
                         Toast.makeText(RegisterActivity.this,"Registered",Toast.LENGTH_SHORT).show();
                     }
