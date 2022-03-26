@@ -58,6 +58,10 @@ public class DBhelper extends SQLiteOpenHelper {
         else
             return false;
     }
+    public Boolean getInfo(String id,String name,String sex, String Bio,String researchTopic, String currentlyWorking)
+    {
+
+    }
 
 
 
