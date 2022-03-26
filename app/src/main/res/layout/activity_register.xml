@@ -80,6 +80,7 @@
         app:layout_constraintVertical_bias="0.404"
         tools:ignore="TextContrastCheck,TextContrastCheck,TextContrastCheck,TextContrastCheck,TextContrastCheck,TextContrastCheck,TextContrastCheck,TextContrastCheck" />
 
+
     <TextView
         android:id="@+id/display_text2"
         android:layout_width="wrap_content"
