@@ -6,14 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".feedActivity">
 
-    <Button
-        android:id="@+id/profile_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/string_profile"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+    <com.lorentzos.flingswipe.SwipeFlingAdapterView
+        android:id="@+id/frame"
+        android:background="#ffeee9e2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:rotation_degrees="15.5"
+        tools:context=".MyActivity" />
 </androidx.constraintlayout.widget.ConstraintLayout>
