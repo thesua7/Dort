@@ -17,7 +17,7 @@ public class DBhelper extends SQLiteOpenHelper {
     }
     @Override
     public void onUpgrade(SQLiteDatabase Mydb, int i, int i1) {
-        Mydb.execSQL("drop table if exists users");
+        Mydb.execSQL("drop table if exists user");
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -43,7 +43,7 @@ public class DBhelper extends SQLiteOpenHelper {
 
     public Boolean checkemail(String email) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
-        Cursor cursor = MyDB.rawQuery("Select * from users where email = ?", new String[]{email});
+        Cursor cursor = MyDB.rawQuery("Select * from user where email = ?", new String[]{email});
         if (cursor.getCount() > 0)
             return true;
         else
@@ -52,15 +52,23 @@ public class DBhelper extends SQLiteOpenHelper {
 
     public Boolean CheckEmailPass(String email,String password){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("select * from users where email=? and password=? ", new String[]{email,password});
+        Cursor cursor = db.rawQuery("select * from user where mail=? and password=? ", new String[]{email,password});
         if(cursor.getCount()>0)
             return true;
         else
             return false;
     }
-    public Boolean getInfo(String id,String name,String sex, String Bio,String researchTopic, String currentlyWorking)
+    public Cursor getGenaralInfo()
     {
-
+        SQLiteDatabase db= this.getReadableDatabase();
+        Cursor cursor= db.rawQuery(" SELECT Name, Id, Sex, Bio From user WHERE Id= 1722198042",null);
+        return cursor;
+    }
+    public Cursor getResearchInfo()
+    {
+        SQLiteDatabase db= this.getReadableDatabase();
+        Cursor cursor= db.rawQuery(" SELECT interest,name,currentlyworkingon From uresearch WHERE Id= 1722198042",null);
+        return cursor;
     }
 
 

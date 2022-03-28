@@ -38,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else {
                     Boolean checkemailpass = db.CheckEmailPass(mail,pass);
-                    if(checkemailpass == true){
+                    if(checkemailpass==true){
                        // Toast.makeText(MainActivity.this,"Successfull",Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(),feedActivity.class);
+                        Intent intent = new Intent(getApplicationContext(),profileActivity.class);
                         startActivity(intent);
 
                     }
