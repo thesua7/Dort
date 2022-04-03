@@ -26,5 +26,6 @@
     <string name="okokok">OKOKOK</string>
     <string name="match">Match</string>
     <string name="not">Not</string>
+    <string name="feed">Feed</string>
 
 </resources>
