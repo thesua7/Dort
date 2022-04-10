@@ -14,40 +14,41 @@
     <ImageView
         android:id="@+id/item_image"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"/>
+        android:layout_height="100dp"
+        android:scaleType="centerCrop" />
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="643dp"
         android:layout_gravity="bottom"
-        android:padding="16dp"
-        android:background="@color/teal_700">
+        android:background="@color/white"
+        android:textColor="@color/teal_200"
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <TextView
-            android:id="@+id/item_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
-            android:textSize="26sp"/>
+            android:id="@+id/item_bio"
+            android:layout_width="378dp"
+            android:layout_height="159dp"
+            android:textColor="@color/teal_700"
+            android:textSize="26sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/item_age"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"/>
+            android:id="@+id/item_research_interest"
+            android:layout_width="378dp"
+            android:layout_height="104dp"
+            android:textColor="@color/teal_700"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/item_city"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"/>
+            android:id="@+id/item_working_on"
+            android:layout_width="378dp"
+            android:layout_height="303dp"
+            android:textColor="@color/teal_700"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

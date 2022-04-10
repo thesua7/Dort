@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -81,13 +82,13 @@ public class feedActivity extends AppCompatActivity {
 
             @Override
             public void onCardAppeared(View view, int position) {
-                TextView tv = view.findViewById(R.id.item_name);
+                TextView tv = view.findViewById(R.id.item_bio);
                 Log.d("OK", "onCardAppeared: " + position + ", nama: " + tv.getText());
             }
 
             @Override
             public void onCardDisappeared(View view, int position) {
-                TextView tv = view.findViewById(R.id.item_name);
+                TextView tv = view.findViewById(R.id.item_bio);
                 Log.d("OK", "onCardAppeared: " + position + ", nama: " + tv.getText());
             }
         });
@@ -119,7 +120,39 @@ public class feedActivity extends AppCompatActivity {
 
     private List<ItemModel> addList() {
         List<ItemModel> items = new ArrayList<>();
-        items.add(new ItemModel(R.drawable.rinterestbox, "Markonah", "24", "Jember"));
+
+        DBhelper db= new DBhelper(this);
+
+        //Get and set General Info
+
+        Cursor cursor= db.getGenaralInfo();
+
+        StringBuilder stringBuilder= new StringBuilder();
+
+        while (cursor.moveToNext())
+        {
+            stringBuilder.append("Name:"+cursor.getString(0)
+                    +"\nNSU ID :"+cursor.getInt(1)
+                    +"\nSex :" +cursor.getString(2)
+                    +"\nBio :" +cursor.getString(3));
+        }
+
+
+        //Get and set Research Info
+
+        Cursor cursor1= db.getResearchInfo();
+
+        StringBuilder stringBuilder1= new StringBuilder();
+        StringBuilder stringBuilder2= new StringBuilder();
+        StringBuilder stringBuilder3= new StringBuilder();
+        while (cursor1.moveToNext())
+        {
+            stringBuilder1.append("Research Interest:\n"+cursor1.getString(0));
+            stringBuilder3.append("Currently Working on:\n"+cursor1.getString(2));
+        }
+
+
+        items.add(new ItemModel(R.drawable.rinterestbox,stringBuilder.toString(), stringBuilder1.toString(), stringBuilder3.toString()));
         items.add(new ItemModel(R.drawable.rinterestbox, "Marpuah", "20", "Malang"));
         items.add(new ItemModel(R.drawable.rinterestbox, "Sukijah", "27", "Jonggol"));
         items.add(new ItemModel(R.drawable.rinterestbox, "Markobar", "19", "Bandung"));
