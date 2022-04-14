@@ -44,18 +44,18 @@ public class CardStackAdapter extends RecyclerView.Adapter<CardStackAdapter.View
         TextView nama, usia, kota;
         ViewHolder(@NonNull View itemView) {
             super(itemView);
-            image = itemView.findViewById(R.id.item_image);
+            //image = itemView.findViewById(R.id.item_image);
             nama = itemView.findViewById(R.id.item_bio);
             usia = itemView.findViewById(R.id.item_research_interest);
             kota = itemView.findViewById(R.id.item_working_on);
         }
 
         void setData(ItemModel data) {
-            Picasso.get()
-                    .load(data.getImage())
-                    .fit()
-                    .centerCrop()
-                    .into(image);
+//            Picasso.get()
+//                    .load(data.getImage())
+//                    .fit()
+//                    .centerCrop()
+//                    .into(image);
             nama.setText(data.getNama());
             usia.setText(data.getUsia());
             kota.setText(data.getKota());

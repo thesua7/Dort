@@ -27,5 +27,8 @@
     <string name="match">Match</string>
     <string name="not">Not</string>
     <string name="feed">Feed</string>
+    <string name="profilex">Profile</string>
+    <string name="logout">LogOut</string>
+    <string name="my_profile">My Profile</string>
 
 </resources>

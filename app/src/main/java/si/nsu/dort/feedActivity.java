@@ -41,6 +41,7 @@ public class feedActivity extends AppCompatActivity {
 
 
         CardStackView cardStackView = findViewById(R.id.card_stack_view);
+
         manager = new CardStackLayoutManager(this, new CardStackListener() {
             @Override
             public void onCardDragging(Direction direction, float ratio) {
@@ -53,15 +54,10 @@ public class feedActivity extends AppCompatActivity {
                 if (direction == Direction.Right){
                     Toast.makeText(feedActivity.this, "Direction Right", Toast.LENGTH_SHORT).show();
                 }
-                if (direction == Direction.Top){
-                    Toast.makeText(feedActivity.this, "Direction Top", Toast.LENGTH_SHORT).show();
-                }
                 if (direction == Direction.Left){
                     Toast.makeText(feedActivity.this, "Direction Left", Toast.LENGTH_SHORT).show();
                 }
-                if (direction == Direction.Bottom){
-                    Toast.makeText(feedActivity.this, "Direction Bottom", Toast.LENGTH_SHORT).show();
-                }
+
 
                 // Paginating
                 if (manager.getTopPosition() == adapter.getItemCount() - 5){
@@ -82,7 +78,16 @@ public class feedActivity extends AppCompatActivity {
 
             @Override
             public void onCardAppeared(View view, int position) {
+                Button temp = view.findViewById(R.id.profile);
                 TextView tv = view.findViewById(R.id.item_bio);
+
+                temp.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getApplicationContext(),profileActivity.class);
+                        startActivity(intent);
+                    }
+                });
                 Log.d("OK", "onCardAppeared: " + position + ", nama: " + tv.getText());
             }
 
@@ -92,13 +97,15 @@ public class feedActivity extends AppCompatActivity {
                 Log.d("OK", "onCardAppeared: " + position + ", nama: " + tv.getText());
             }
         });
+
         manager.setStackFrom(StackFrom.None);
         manager.setVisibleCount(3);
+
         manager.setTranslationInterval(8.0f);
         manager.setScaleInterval(0.95f);
         manager.setSwipeThreshold(0.3f);
         manager.setMaxDegree(20.0f);
-        manager.setDirections(Direction.FREEDOM);
+        manager.setDirections(Direction.HORIZONTAL);
         manager.setCanScrollHorizontal(true);
         manager.setSwipeableMethod(SwipeableMethod.Manual);
         manager.setOverlayInterpolator(new LinearInterpolator());
