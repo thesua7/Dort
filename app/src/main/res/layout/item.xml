@@ -45,25 +45,72 @@
             android:textColor="@color/teal_700"
             android:textSize="20sp"
             android:textStyle="bold" />
+        <LinearLayout
 
-        <Button
-            android:id="@+id/profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/teal_700"
-            android:textColor="@color/black"
-            android:minHeight="48dp"
-            android:text="@string/profilex" />
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="70sp">
+            <Button
+                android:text="@string/profile"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:id="@+id/profile_btn"
+                android:layout_width="90sp"
+                android:background="@color/teal_200"
+                android:layout_gravity="center"
+                android:layout_height="60sp">
 
-        <Button
-            android:id="@+id/logout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/black"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:minHeight="50dp"
-            android:text="@string/logout" />
+            </Button>
+            <Button
+                android:id="@+id/search_btn"
+                android:text="@string/search"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:background="@color/teal_200"
+                android:layout_width="90sp"
+                android:layout_height="60sp">
+
+            </Button>
+
+            <Button
+                android:id="@+id/setting_btn"
+                android:text="@string/setting"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:background="@color/teal_200"
+                android:layout_width="90sp"
+                android:layout_height="60sp">
+
+            </Button>
+
+            <Button
+                android:id="@+id/logout_btn"
+                android:text="@string/logoutx"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:background="@color/teal_200"
+                android:layout_width="90sp"
+                android:layout_height="60sp"
+                >
+
+            </Button>
+
+
+
+
+        </LinearLayout>
+
+
+
+
 
     </LinearLayout>
 

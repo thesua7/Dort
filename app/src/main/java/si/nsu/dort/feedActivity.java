@@ -78,7 +78,7 @@ public class feedActivity extends AppCompatActivity {
 
             @Override
             public void onCardAppeared(View view, int position) {
-                Button temp = view.findViewById(R.id.profile);
+                Button temp = view.findViewById(R.id.profile_btn);
                 TextView tv = view.findViewById(R.id.item_bio);
 
                 temp.setOnClickListener(new View.OnClickListener() {
@@ -149,7 +149,7 @@ public class feedActivity extends AppCompatActivity {
                 temp_cursor = db.getResearchInfobyID(cursor.getInt(1));
                 String temp_O = db.get_research_infos(temp_cursor);
                 String temp_1 = db.get_research_interests(temp_cursor);
-                items.add(new ItemModel(R.drawable.rinterestbox, stringBuilder.toString(), temp_O, temp_1));
+                items.add(new ItemModel(R.drawable.rinterestbox, stringBuilder.toString(), temp_1, temp_O));
                 // move to the next row
                 stringBuilder = new StringBuilder();
                 cursor.moveToNext();
