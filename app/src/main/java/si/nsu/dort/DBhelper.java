@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 
 import androidx.annotation.Nullable;
@@ -64,6 +65,15 @@ public class DBhelper extends SQLiteOpenHelper {
         Cursor cursor= db.rawQuery(" SELECT Name, Id, Sex, Bio From user WHERE Id= 1722198042",null);
         return cursor;
     }
+    public Cursor getAllInfo()
+    {
+        SQLiteDatabase db= this.getReadableDatabase();
+        Cursor cursor= db.rawQuery(" SELECT Name, Id, Sex, Bio From user",null);
+        Log.d("Test",cursor.toString());
+        return cursor;
+    }
+
+
     public Cursor getResearchInfo()
     {
         SQLiteDatabase db= this.getReadableDatabase();
@@ -72,5 +82,45 @@ public class DBhelper extends SQLiteOpenHelper {
     }
 
 
+
+    public Cursor getResearchInfobyID(int id)
+    {
+        String temp = String.valueOf(id);
+        SQLiteDatabase db= this.getReadableDatabase();
+        Cursor cursor= db.rawQuery(" SELECT interest,name,currentlyworkingon From uresearch WHERE Id=?",new String[]{temp});
+        return cursor;
+    }
+
+
+    public String get_research_infos(Cursor cursor){
+        StringBuilder temp_string_builder= new StringBuilder();
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+
+            while (!cursor.isAfterLast()) {
+                temp_string_builder.append("Currently Working on:\n"+cursor.getString(2));                // move to the next row.
+                cursor.moveToNext();
+            }
+        }
+
+        return temp_string_builder.toString();
+
+    }
+
+
+    public String get_research_interests(Cursor cursor){
+        StringBuilder temp_string_builder= new StringBuilder();
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+
+            while (!cursor.isAfterLast()) {
+                temp_string_builder.append("Research Interest:\n"+cursor.getString(0));               // move to the next row.
+                cursor.moveToNext();
+            }
+        }
+
+        return temp_string_builder.toString();
+
+    }
 
 }

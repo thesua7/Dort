@@ -132,34 +132,35 @@ public class feedActivity extends AppCompatActivity {
 
         //Get and set General Info
 
-        Cursor cursor= db.getGenaralInfo();
+        Cursor cursor= db.getAllInfo();
 
         StringBuilder stringBuilder= new StringBuilder();
 
-        while (cursor.moveToNext())
-        {
-            stringBuilder.append("Name:"+cursor.getString(0)
-                    +"\nNSU ID :"+cursor.getInt(1)
-                    +"\nSex :" +cursor.getString(2)
-                    +"\nBio :" +cursor.getString(3));
+         Cursor temp_cursor;
+         int temp=0;
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+
+            while (!cursor.isAfterLast()) {
+                stringBuilder.append("Name:"+cursor.getString(0)
+                        +"\nNSU ID :"+cursor.getInt(1)
+                        +"\nSex :" +cursor.getString(2)
+                        +"\nBio :" +cursor.getString(3));
+                temp_cursor = db.getResearchInfobyID(cursor.getInt(1));
+                String temp_O = db.get_research_infos(temp_cursor);
+                String temp_1 = db.get_research_interests(temp_cursor);
+                items.add(new ItemModel(R.drawable.rinterestbox, stringBuilder.toString(), temp_O, temp_1));
+                // move to the next row
+                stringBuilder = new StringBuilder();
+                cursor.moveToNext();
+            }
         }
 
 
         //Get and set Research Info
 
-        Cursor cursor1= db.getResearchInfo();
-
-        StringBuilder stringBuilder1= new StringBuilder();
-        StringBuilder stringBuilder2= new StringBuilder();
-        StringBuilder stringBuilder3= new StringBuilder();
-        while (cursor1.moveToNext())
-        {
-            stringBuilder1.append("Research Interest:\n"+cursor1.getString(0));
-            stringBuilder3.append("Currently Working on:\n"+cursor1.getString(2));
-        }
 
 
-        items.add(new ItemModel(R.drawable.rinterestbox,stringBuilder.toString(), stringBuilder1.toString(), stringBuilder3.toString()));
         items.add(new ItemModel(R.drawable.rinterestbox, "Marpuah", "20", "Malang"));
         items.add(new ItemModel(R.drawable.rinterestbox, "Sukijah", "27", "Jonggol"));
         items.add(new ItemModel(R.drawable.rinterestbox, "Markobar", "19", "Bandung"));
