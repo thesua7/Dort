@@ -113,6 +113,16 @@ public class DBhelper extends SQLiteOpenHelper {
 
         return ID;
     }
+
+    public Cursor getAllInfobyId(String id)
+    {
+
+        SQLiteDatabase db= this.getReadableDatabase();
+        Cursor cursor= db.rawQuery(" SELECT Name, Id, Sex, Bio From user WHERE Id=?",new String[]{id});
+        return cursor;
+    }
+
+
     public Cursor getAllInfo()
     {
         SQLiteDatabase db= this.getReadableDatabase();

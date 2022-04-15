@@ -5,6 +5,7 @@ package si.nsu.dort;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -12,10 +13,16 @@ import android.widget.TextView;
 
 public class profileActivity extends AppCompatActivity {
 
+    SharedPreferences temp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+
+        temp = getSharedPreferences("Match_Algo",MODE_PRIVATE);
+        String card_session_id = temp.getString("Card_Session",null);
 
         TextView getGenInfo= findViewById(R.id.getGenInfo);
         TextView workedon=findViewById(R.id.workedon);
@@ -26,11 +33,10 @@ public class profileActivity extends AppCompatActivity {
 
         //Get and set General Info
 
-        Cursor cursor= db.getGenaralInfo();
+        Cursor cursor= db.getAllInfobyId(card_session_id);
 
         StringBuilder stringBuilder= new StringBuilder();
 
-        getGenInfo.setText(stringBuilder);
 
         while (cursor.moveToNext())
         {
@@ -45,7 +51,7 @@ public class profileActivity extends AppCompatActivity {
 
         //Get and set Research Info
 
-        Cursor cursor1= db.getResearchInfo();
+        Cursor cursor1= db.getResearchInfobyID(Integer.parseInt(card_session_id));
 
         StringBuilder stringBuilder1= new StringBuilder();
         StringBuilder stringBuilder2= new StringBuilder();

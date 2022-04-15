@@ -53,6 +53,7 @@ public class feedActivity extends AppCompatActivity {
 
         prf = getSharedPreferences("user_details",MODE_PRIVATE);
         String session_id = prf.getString("id",null);
+
         Log.d("Session",session_id);
 
         manager = new CardStackLayoutManager(this, new CardStackListener() {
@@ -108,6 +109,8 @@ public class feedActivity extends AppCompatActivity {
                 String current_id = parts[1].split("ID:")[1].split(" ")[1];
                 String session_id = prf.getString("id",null);
 
+
+
                 if(match_token==1){
                     boolean checkdb = db.CheckMatch(session_id,current_id,Integer.toString(match_token));
                     if(checkdb){
@@ -145,6 +148,12 @@ public class feedActivity extends AppCompatActivity {
                 temp.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
+                        pref_Match = getSharedPreferences("Match_Algo",MODE_PRIVATE);
+                        SharedPreferences.Editor editor = pref_Match.edit();
+                        editor.putString("Card_Session",current_id);
+                        editor.commit();
+
                         Intent intent = new Intent(getApplicationContext(),profileActivity.class);
                         startActivity(intent);
                     }
@@ -192,7 +201,7 @@ public class feedActivity extends AppCompatActivity {
 
     private List<ItemModel> addList() {
         List<ItemModel> items = new ArrayList<>();
-        pref_Match = getSharedPreferences("Match_Algo",MODE_PRIVATE);
+
 
 
 
@@ -217,9 +226,7 @@ public class feedActivity extends AppCompatActivity {
                 String temp_O = db.get_research_infos(temp_cursor);
                 String temp_1 = db.get_research_interests(temp_cursor);
 
-                SharedPreferences.Editor editor = pref_Match.edit();
-                editor.putString("Match_id",String.valueOf(cursor.getInt(1)));
-                editor.commit();
+
                 Log.d("Match",String.valueOf(cursor.getInt(1)));
                 items.add(new ItemModel(R.drawable.rinterestbox, stringBuilder.toString(), temp_1, temp_O));
                 // move to the next row

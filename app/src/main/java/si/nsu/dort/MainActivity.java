@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         pass_word = findViewById(R.id.password);
         signUp = findViewById(R.id.btn_signup);
         signIn = findViewById(R.id.btn_login);
+
         pref = getSharedPreferences("user_details",MODE_PRIVATE);
 
 
