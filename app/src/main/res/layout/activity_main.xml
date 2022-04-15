@@ -102,6 +102,7 @@
         tools:ignore="TextContrastCheck,TextContrastCheck,TextContrastCheck,TextContrastCheck,TextContrastCheck,TextContrastCheck,TextContrastCheck,TextContrastCheck"
         android:importantForAutofill="no" />
 
+
     <EditText
         android:id="@+id/password"
         android:layout_width="353dp"

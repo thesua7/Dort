@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,6 +33,7 @@ public class feedActivity extends AppCompatActivity {
 
     private CardStackLayoutManager manager;
     private CardStackAdapter adapter;
+    SharedPreferences prf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,9 @@ public class feedActivity extends AppCompatActivity {
 
 
         CardStackView cardStackView = findViewById(R.id.card_stack_view);
+        prf = getSharedPreferences("user_details",MODE_PRIVATE);
+        String session_id = prf.getString("id",null);
+        Log.d("Session",session_id);
 
         manager = new CardStackLayoutManager(this, new CardStackListener() {
             @Override
@@ -80,6 +85,18 @@ public class feedActivity extends AppCompatActivity {
             public void onCardAppeared(View view, int position) {
                 Button temp = view.findViewById(R.id.profile_btn);
                 TextView tv = view.findViewById(R.id.item_bio);
+                Button Log_out = view.findViewById(R.id.logout_btn);
+
+                Log_out.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        SharedPreferences.Editor editor = prf.edit();
+                        editor.clear();
+                        editor.commit();
+                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
 
                 temp.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -88,6 +105,10 @@ public class feedActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
+
+
+
+
                 Log.d("OK", "onCardAppeared: " + position + ", nama: " + tv.getText());
             }
 

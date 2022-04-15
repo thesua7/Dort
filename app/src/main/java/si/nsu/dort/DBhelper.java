@@ -70,6 +70,24 @@ public class DBhelper extends SQLiteOpenHelper {
         Cursor cursor= db.rawQuery(" SELECT Name, Id, Sex, Bio From user WHERE Id= 1722198042",null);
         return cursor;
     }
+
+    public int getAllInfoByMail(String email)
+    {
+        SQLiteDatabase db= this.getReadableDatabase();
+        Cursor cursor= db.rawQuery(" SELECT Name, Id, Sex, Bio From user where mail=?",new String[]{email});
+       int ID=0;
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+
+            while (!cursor.isAfterLast()) {
+                ID = cursor.getInt(1);
+                cursor.moveToNext();
+                break;
+            }
+        }
+
+        return ID;
+    }
     public Cursor getAllInfo()
     {
         SQLiteDatabase db= this.getReadableDatabase();
