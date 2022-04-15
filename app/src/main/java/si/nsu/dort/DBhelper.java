@@ -46,6 +46,24 @@ public class DBhelper extends SQLiteOpenHelper {
             return true;
     }
 
+    public Boolean insertData_Match_Status(String CurrentId,String MatchId,String Matchstatus){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("CurrentId",Integer.parseInt(CurrentId));
+        values.put("MatchId",Integer.parseInt(MatchId));
+        values.put("Matchstatus",Integer.parseInt(Matchstatus));
+
+
+        long result = db.insert("match",null,values);
+        if(result==-1) return false;
+        else
+            return true;
+    }
+
+
+
+
     public Boolean checkemail_(String email) {
 
         SQLiteDatabase MyDB = this.getWritableDatabase();

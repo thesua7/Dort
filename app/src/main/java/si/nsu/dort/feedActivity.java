@@ -34,6 +34,11 @@ public class feedActivity extends AppCompatActivity {
     private CardStackLayoutManager manager;
     private CardStackAdapter adapter;
     SharedPreferences prf;
+    SharedPreferences pref_Match;
+
+    List<ItemModel> MainArray;
+    int match_token=0;
+    DBhelper db= new DBhelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,9 @@ public class feedActivity extends AppCompatActivity {
 
 
         CardStackView cardStackView = findViewById(R.id.card_stack_view);
+
+
+
         prf = getSharedPreferences("user_details",MODE_PRIVATE);
         String session_id = prf.getString("id",null);
         Log.d("Session",session_id);
@@ -57,9 +65,15 @@ public class feedActivity extends AppCompatActivity {
             public void onCardSwiped(Direction direction) {
                 Log.d("OK", "onCardSwiped: p=" + manager.getTopPosition() + " d=" + direction);
                 if (direction == Direction.Right){
+                        match_token = 1;
+
+
                     Toast.makeText(feedActivity.this, "Direction Right", Toast.LENGTH_SHORT).show();
                 }
                 if (direction == Direction.Left){
+                    match_token = 0;
+
+
                     Toast.makeText(feedActivity.this, "Direction Left", Toast.LENGTH_SHORT).show();
                 }
 
@@ -86,6 +100,19 @@ public class feedActivity extends AppCompatActivity {
                 Button temp = view.findViewById(R.id.profile_btn);
                 TextView tv = view.findViewById(R.id.item_bio);
                 Button Log_out = view.findViewById(R.id.logout_btn);
+
+                //Log.d("List",MainArray.get(position).getNama());
+                String[] parts = MainArray.get(position).getNama().split("\n");
+
+           //     Log.d("List",parts[1].split("ID:")[1].split(" ")[1]);
+
+                String current_id = parts[1].split("ID:")[1].split(" ")[1];
+                String session_id = prf.getString("id",null);
+               boolean result =  db.insertData_Match_Status(session_id,current_id,String.valueOf(match_token));
+
+                if(result){
+                    Log.d("List","done");
+                }
 
                 Log_out.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -148,8 +175,10 @@ public class feedActivity extends AppCompatActivity {
 
     private List<ItemModel> addList() {
         List<ItemModel> items = new ArrayList<>();
+        pref_Match = getSharedPreferences("Match_Algo",MODE_PRIVATE);
 
-        DBhelper db= new DBhelper(this);
+
+
 
         //Get and set General Info
 
@@ -164,17 +193,24 @@ public class feedActivity extends AppCompatActivity {
 
             while (!cursor.isAfterLast()) {
                 stringBuilder.append("Name:"+cursor.getString(0)
-                        +"\nNSU ID :"+cursor.getInt(1)
-                        +"\nSex :" +cursor.getString(2)
-                        +"\nBio :" +cursor.getString(3));
+                        +"\nNSU ID: "+cursor.getInt(1)
+                        +"\nSex: " +cursor.getString(2)
+                        +"\nBio: " +cursor.getString(3));
                 temp_cursor = db.getResearchInfobyID(cursor.getInt(1));
                 String temp_O = db.get_research_infos(temp_cursor);
                 String temp_1 = db.get_research_interests(temp_cursor);
+
+                SharedPreferences.Editor editor = pref_Match.edit();
+                editor.putString("Match_id",String.valueOf(cursor.getInt(1)));
+                editor.commit();
+                Log.d("Match",String.valueOf(cursor.getInt(1)));
                 items.add(new ItemModel(R.drawable.rinterestbox, stringBuilder.toString(), temp_1, temp_O));
                 // move to the next row
                 stringBuilder = new StringBuilder();
                 cursor.moveToNext();
             }
+
+            MainArray = items;
         }
 
 
