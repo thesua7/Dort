@@ -22,29 +22,34 @@ public class DBhelper extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table users(email TEXT primary key,name TEXT,password TEXT)");
+        db.execSQL("create table user(Mail TEXT primary key,Name TEXT,password TEXT,Sex TEXT,Id INTEGER,Bio TEXT)");
 
     }
 
 
 
-    public Boolean insertData(String email,String name,String password){
+
+    public Boolean insertData_(String email,String name,String password,String gender,String id,String bio){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put("email",email);
+        values.put("Mail",email);
+        values.put("Name",name);
         values.put("password",password);
-        values.put("name",name);
+        values.put("Sex",gender);
+        values.put("Id",Integer.parseInt(id));
+        values.put("Bio",bio);
 
-        long result = db.insert("users",null,values);
+        long result = db.insert("user",null,values);
         if(result==-1) return false;
         else
             return true;
     }
 
-    public Boolean checkemail(String email) {
+    public Boolean checkemail_(String email) {
+
         SQLiteDatabase MyDB = this.getWritableDatabase();
-        Cursor cursor = MyDB.rawQuery("Select * from user where email = ?", new String[]{email});
+        Cursor cursor = MyDB.rawQuery("Select * from user where mail = ?", new String[]{email});
         if (cursor.getCount() > 0)
             return true;
         else

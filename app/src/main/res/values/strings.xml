@@ -33,6 +33,10 @@
     <string name="logoutx">Logout</string>
     <string name="setting">Setting</string>
     <string name="search">Search</string>
+    <string name="about_you">About you!</string>
+    <string name="nsu_id">NSU ID</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
 
 
 </resources>
