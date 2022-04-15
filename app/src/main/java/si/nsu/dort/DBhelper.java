@@ -50,18 +50,25 @@ public class DBhelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put("CurrentId",Integer.parseInt(CurrentId));
-        values.put("MatchId",Integer.parseInt(MatchId));
-        values.put("Matchstatus",Integer.parseInt(Matchstatus));
+        values.put("CurrentId",CurrentId);
+        values.put("MatchId",MatchId);
+        values.put("Matchstatus",Matchstatus);
 
 
-        long result = db.insert("match",null,values);
+        long result = db.insert("matchStat",null,values);
         if(result==-1) return false;
         else
             return true;
     }
 
-
+    public Boolean CheckMatch(String currentId,String matchId,String tokken){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from matchStat where CurrentId=? and MatchId=? and Matchstatus=?", new String[]{currentId,matchId,tokken});
+        if(cursor.getCount()>0)
+            return true;
+        else
+            return false;
+    }
 
 
     public Boolean checkemail_(String email) {

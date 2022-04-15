@@ -67,7 +67,6 @@ public class feedActivity extends AppCompatActivity {
                 if (direction == Direction.Right){
                         match_token = 1;
 
-
                     Toast.makeText(feedActivity.this, "Direction Right", Toast.LENGTH_SHORT).show();
                 }
                 if (direction == Direction.Left){
@@ -108,11 +107,29 @@ public class feedActivity extends AppCompatActivity {
 
                 String current_id = parts[1].split("ID:")[1].split(" ")[1];
                 String session_id = prf.getString("id",null);
-               boolean result =  db.insertData_Match_Status(session_id,current_id,String.valueOf(match_token));
 
-                if(result){
-                    Log.d("List","done");
+                if(match_token==1){
+                    boolean checkdb = db.CheckMatch(session_id,current_id,Integer.toString(match_token));
+                    if(checkdb){
+                        Log.d("MSG","Msg module");
+                    }
+                    else {
+                        boolean result =  db.insertData_Match_Status(session_id,current_id,String.valueOf(match_token));
+                        if(result){
+                            Log.d("List","right");
+                        }
+
+                    }
                 }
+
+                if (match_token == 0) {
+                    boolean result =  db.insertData_Match_Status(session_id,current_id,String.valueOf(match_token));
+                    if(result){
+                        Log.d("List","left");
+                    }
+                }
+
+
 
                 Log_out.setOnClickListener(new View.OnClickListener() {
                     @Override
