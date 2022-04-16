@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    tools:context=".Message">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#fff">
+
+        <EditText
+            android:id="@+id/usey"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/teal_200"
+            android:gravity="center"
+            android:hint="@string/message_as"
+            android:importantForAutofill="no"
+            android:inputType="textShortMessage"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20sp"
+            tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/lvConversation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/form"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="" />
+
+    <LinearLayout
+        android:id="@+id/form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="#91f1f1f1"
+        android:orientation="horizontal"
+        android:paddingBottom="2dp" >
+
+
+        <EditText
+            android:id="@+id/etMessage"
+            android:layout_width="335dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+            android:inputType="textShortMessage"
+            android:importantForAutofill="no" />
+
+        <Button
+            android:id="@+id/btnSendMsg"
+            android:layout_width="49dp"
+            android:layout_height="31dp"
+            android:layout_marginEnd="5dp"
+            android:backgroundTint="@color/teal_700"
+            android:text="@string/send"
+            android:textColor="#fff"
+            android:textSize="9dp"
+            tools:ignore="TextContrastCheck" />
+    </LinearLayout>
+</RelativeLayout>

@@ -54,7 +54,9 @@ public class MainActivity extends AppCompatActivity {
                         editor.putString("pass",pass);
                         editor.commit();
                        // Toast.makeText(MainActivity.this,"Successfull",Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(),feedActivity.class);
+//                        Intent intent = new Intent(getApplicationContext(),feedActivity.class);
+//                        startActivity(intent);
+                        Intent intent = new Intent(getApplicationContext(),Message.class);
                         startActivity(intent);
 
                     }
