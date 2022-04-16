@@ -37,6 +37,11 @@
     <string name="nsu_id">NSU ID</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
+    <string name="ex_ml_ai">Ex: ML,AI</string>
+    <string name="settings">Settings</string>
+    <string name="describe_your_past_works">Describe your past works.</string>
+    <string name="describe_your_current_works">Describe your current works.</string>
+    <string name="submit">Submit</string>
 
 
 </resources>

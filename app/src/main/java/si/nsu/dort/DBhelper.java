@@ -26,6 +26,20 @@ public class DBhelper extends SQLiteOpenHelper {
 
     }
 
+    public void insertData_to_Research(String present,String past,String id,String topics){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("currentlyworkingon",present);
+        values.put("name",past);
+        values.put("interest",topics);
+        values.put("id",String.valueOf(id));
+
+
+        long result = db.insert("uresearch",null,values);
+
+    }
+
 
 
 
@@ -89,6 +103,21 @@ public class DBhelper extends SQLiteOpenHelper {
         else
             return false;
     }
+
+    public  Boolean CheckResearchInfo(String  id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("Select * from uresearch where Id=? ",new String[]{id});
+        if(cursor.getCount()>0){
+            String whereClause = "Id=?";
+            String whereArgs[] = {id};
+            db.delete("uresearch", whereClause, whereArgs);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     public Cursor getGenaralInfo()
     {
         SQLiteDatabase db= this.getReadableDatabase();

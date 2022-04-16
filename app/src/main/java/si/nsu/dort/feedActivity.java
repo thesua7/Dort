@@ -100,6 +100,7 @@ public class feedActivity extends AppCompatActivity {
                 Button temp = view.findViewById(R.id.profile_btn);
                 TextView tv = view.findViewById(R.id.item_bio);
                 Button Log_out = view.findViewById(R.id.logout_btn);
+                Button settings_btn = view.findViewById(R.id.setting_btn);
 
                 //Log.d("List",MainArray.get(position).getNama());
                 String[] parts = MainArray.get(position).getNama().split("\n");
@@ -159,6 +160,14 @@ public class feedActivity extends AppCompatActivity {
                     }
                 });
 
+                settings_btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent intent = new Intent(getApplicationContext(),settingsActivity.class);
+                        startActivity(intent);
+                    }
+                });
 
 
 
