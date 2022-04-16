@@ -95,6 +95,18 @@ public class DBhelper extends SQLiteOpenHelper {
             return false;
     }
 
+
+    public Boolean checkId_(String id) {
+
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor cursor = MyDB.rawQuery("Select * from user where Id = ?", new String[]{id});
+        if (cursor.getCount() > 0)
+            return true;
+        else
+            return false;
+    }
+
+
     public Boolean CheckEmailPass(String email,String password){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("select * from user where mail=? and password=? ", new String[]{email,password});
@@ -167,6 +179,12 @@ public class DBhelper extends SQLiteOpenHelper {
         Cursor cursor= db.rawQuery(" SELECT interest,name,currentlyworkingon From uresearch WHERE Id= 1722198042",null);
         return cursor;
     }
+
+   public Cursor getAllId(String id){
+       SQLiteDatabase db= this.getReadableDatabase();
+       Cursor cursor= db.rawQuery(" SELECT Id From user where Id !=?",new String[]{id});
+        return cursor;
+   }
 
 
 

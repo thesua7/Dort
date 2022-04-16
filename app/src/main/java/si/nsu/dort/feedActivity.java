@@ -37,7 +37,7 @@ public class feedActivity extends AppCompatActivity {
     SharedPreferences pref_Match;
 
     List<ItemModel> MainArray;
-    int match_token=0;
+    static int match_token=0;
     DBhelper db= new DBhelper(this);
 
     @Override
@@ -101,6 +101,7 @@ public class feedActivity extends AppCompatActivity {
                 TextView tv = view.findViewById(R.id.item_bio);
                 Button Log_out = view.findViewById(R.id.logout_btn);
                 Button settings_btn = view.findViewById(R.id.setting_btn);
+                Button srch = view.findViewById(R.id.search_btn);
 
                 //Log.d("List",MainArray.get(position).getNama());
                 String[] parts = MainArray.get(position).getNama().split("\n");
@@ -169,6 +170,13 @@ public class feedActivity extends AppCompatActivity {
                     }
                 });
 
+                srch.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getApplicationContext(),searchActivity.class);
+                        startActivity(intent);
+                    }
+                });
 
 
                 Log.d("OK", "onCardAppeared: " + position + ", nama: " + tv.getText());

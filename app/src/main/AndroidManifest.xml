@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dort">
         <activity
+            android:name=".searchActivity"
+            android:exported="false" />
+        <activity
             android:name=".settingsActivity"
             android:exported="false" />
         <activity

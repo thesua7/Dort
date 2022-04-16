@@ -32,7 +32,7 @@
     <string name="my_profile">My Profile</string>
     <string name="logoutx">Logout</string>
     <string name="setting">Setting</string>
-    <string name="search">Search</string>
+
     <string name="about_you">About you!</string>
     <string name="nsu_id">NSU ID</string>
     <string name="male">Male</string>
@@ -42,6 +42,8 @@
     <string name="describe_your_past_works">Describe your past works.</string>
     <string name="describe_your_current_works">Describe your current works.</string>
     <string name="submit">Submit</string>
+    <string name="search">Search</string>
+    <string name="report">Report</string>
 
 
 </resources>

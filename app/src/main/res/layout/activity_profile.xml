@@ -135,7 +135,7 @@
         tools:ignore="TextContrastCheck,TextContrastCheck" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/match_btn"
         android:layout_width="62dp"
         android:layout_height="57dp"
         android:background="@drawable/matchbox"
@@ -145,14 +145,31 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.61"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976"
         tools:ignore="TextContrastCheck" />
 
     <Button
-        android:id="@+id/nt_match_btn"
+        android:id="@+id/report_btn"
+        android:layout_width="62dp"
+        android:layout_height="57dp"
+        android:background="@drawable/matchbox"
+        android:text="@string/report"
+        android:textColor="@color/teal_700"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.77"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/feed_btn"
         android:layout_width="62dp"
         android:layout_height="57dp"
         android:background="@drawable/matchbox"
@@ -162,7 +179,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.381"
+        app:layout_constraintHorizontal_bias="0.232"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976"
