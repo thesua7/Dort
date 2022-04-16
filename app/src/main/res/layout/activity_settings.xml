@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".settingsActivity">
+
+
+    <EditText
+        android:id="@+id/research_interest"
+        android:layout_width="339dp"
+        android:layout_height="35dp"
+        android:background="@color/white"
+        android:ems="10"
+
+        android:hint="Ex: ML,AI"
+        android:textAlignment="center"
+        android:textColor="@color/teal_700"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.182" />
+
+    <EditText
+        android:id="@+id/research_interest2"
+        android:layout_width="387dp"
+        android:layout_height="159dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:hint="Describe your past works."
+
+        android:paddingStart="6sp"
+        android:textAlignment="center"
+        android:textColor="@color/teal_700"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.541"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.412" />
+
+    <TextView
+        android:id="@+id/interestArea"
+        android:layout_width="match_parent"
+        android:layout_height="27dp"
+        android:background="@color/teal_700"
+        android:paddingStart="10dp"
+        android:text="Research Interest"
+
+
+        android:textAlignment="center"
+
+        android:textColor="@color/white"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.127"
+        tools:ignore="HardcodedText,MissingConstraints" />
+
+    <TextView
+        android:id="@+id/show"
+        android:layout_width="385dp"
+        android:layout_height="25dp"
+
+        android:background="@color/teal_200"
+        android:text="Worked On and Published research"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.28"
+        tools:ignore="HardcodedText,TextContrastCheck" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
