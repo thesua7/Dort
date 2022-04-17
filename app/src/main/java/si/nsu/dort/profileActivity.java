@@ -26,6 +26,8 @@ public class profileActivity extends AppCompatActivity {
 
         feed_btn = findViewById(R.id.feed_btn);
         match_btn = findViewById(R.id.match_btn);
+        report_btn = findViewById(R.id.rep_btn);
+
 
         prf = getSharedPreferences("user_details",MODE_PRIVATE);
         String session_id = prf.getString("id",null);
@@ -97,6 +99,14 @@ public class profileActivity extends AppCompatActivity {
                     }
 
                 }
+            }
+        });
+
+        report_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),reportActivity.class);
+                startActivity(intent);
             }
         });
 

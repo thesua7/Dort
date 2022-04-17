@@ -2,7 +2,10 @@ package si.nsu.dort;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,13 +31,13 @@ public class Message extends AppCompatActivity {
 
     Button btnSendMsg;
     EditText etMsg, usey;
-
+    SharedPreferences prf;
     ListView lvDiscussion;
     ArrayList<String> listConversation = new ArrayList<String>();
     ArrayAdapter arrayAdpt;
 
     String UserName, user_msg_key;
-
+    String temp;
     private DatabaseReference dbr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +50,29 @@ public class Message extends AppCompatActivity {
         arrayAdpt = new ArrayAdapter(this, android.R.layout.simple_list_item_1, listConversation);
         lvDiscussion.setAdapter(arrayAdpt);
 
-        UserName = "Kill";
+        prf = getSharedPreferences("user_details",MODE_PRIVATE);
+        String session_id = prf.getString("id",null);
 
+
+        UserName = session_id;
+
+
+        DBhelper db = new DBhelper(this);
+        Cursor cursor = db.getAllInfobyId(UserName);
+
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+
+            while (!cursor.isAfterLast()) {
+                temp = cursor.getString(0);
+                cursor.moveToNext();
+                break;
+            }
+        }
+
+        usey.setText(temp);
         dbr = FirebaseDatabase.getInstance().getReference();
+
 
         btnSendMsg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +83,7 @@ public class Message extends AppCompatActivity {
 
                 DatabaseReference dbr2 = dbr.child(user_msg_key);
                 Map<String, Object> map2 = new HashMap<String, Object>();
-                map2.put("msg", usey.getText().toString() + " : " + etMsg.getText().toString());
+                map2.put("msg", temp + " : " + etMsg.getText().toString());
                 dbr2.updateChildren(map2);
                 etMsg.setText("");
             }

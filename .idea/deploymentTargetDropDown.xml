@@ -13,5 +13,17 @@
       </Target>
     </targetSelectedWithDropDown>
     <timeTargetWasSelectedWithDropDown value="2022-04-16T20:06:39.847873600Z" />
+    <multipleDevicesSelectedInDropDown value="true" />
+    <runningDeviceTargetsSelectedWithDialog>
+      <Target>
+        <type value="RUNNING_DEVICE_TARGET" />
+        <deviceKey>
+          <Key>
+            <type value="VIRTUAL_DEVICE_PATH" />
+            <value value="C:\Users\thesu\.android\avd\Pixel_2_API_30.avd" />
+          </Key>
+        </deviceKey>
+      </Target>
+    </runningDeviceTargetsSelectedWithDialog>
   </component>
 </project>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".reportActivity">
+
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/teal_200"
+        android:text="Report Text"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.219"
+        tools:ignore="HardcodedText,TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/report_msg"
+        android:layout_width="387dp"
+        android:layout_height="159dp"
+        android:autofillHints=""
+        android:background="@color/white"
+        android:ems="10"
+
+        android:hint="@string/report_comments"
+        android:inputType="textLongMessage"
+        android:paddingStart="6sp"
+        android:textAlignment="center"
+        android:textColor="@color/teal_700"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.347" />
+
+    <Button
+        android:id="@+id/submit_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button"
+        android:text="@string/submit"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.554"
+        tools:ignore="TextContrastCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

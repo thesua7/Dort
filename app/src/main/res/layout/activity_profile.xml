@@ -152,7 +152,7 @@
         tools:ignore="TextContrastCheck" />
 
     <Button
-        android:id="@+id/report_btn"
+        android:id="@+id/rep_btn"
         android:layout_width="62dp"
         android:layout_height="57dp"
         android:background="@drawable/matchbox"

@@ -103,6 +103,7 @@ public class feedActivity extends AppCompatActivity {
                 Button settings_btn = view.findViewById(R.id.setting_btn);
                 Button srch = view.findViewById(R.id.search_btn);
 
+
                 //Log.d("List",MainArray.get(position).getNama());
                 String[] parts = MainArray.get(position).getNama().split("\n");
 
@@ -116,7 +117,10 @@ public class feedActivity extends AppCompatActivity {
                 if(match_token==1){
                     boolean checkdb = db.CheckMatch(session_id,current_id,Integer.toString(match_token));
                     if(checkdb){
-                        Log.d("MSG","Msg module");
+
+                        Intent intent = new Intent(getApplicationContext(),Message.class);
+                        startActivity(intent);
+
                     }
                     else {
                         boolean result =  db.insertData_Match_Status(session_id,current_id,String.valueOf(match_token));
@@ -177,6 +181,9 @@ public class feedActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
+
+
+
 
 
                 Log.d("OK", "onCardAppeared: " + position + ", nama: " + tv.getText());

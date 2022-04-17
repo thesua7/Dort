@@ -75,6 +75,21 @@ public class DBhelper extends SQLiteOpenHelper {
             return true;
     }
 
+    public Boolean insertData_Report(String reported_by,String reported_to,String msg){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("reportedBy",reported_by);
+        values.put("reportedTo  ",reported_to);
+        values.put("reportText",msg);
+
+
+        long result = db.insert("reportusers",null,values);
+        if(result==-1) return false;
+        else
+            return true;
+    }
+
     public Boolean CheckMatch(String currentId,String matchId,String tokken){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("select * from matchStat where CurrentId=? and MatchId=? and Matchstatus=?", new String[]{currentId,matchId,tokken});
@@ -185,6 +200,13 @@ public class DBhelper extends SQLiteOpenHelper {
        Cursor cursor= db.rawQuery(" SELECT Id From user where Id !=?",new String[]{id});
         return cursor;
    }
+
+    public Cursor getNameById(String id){
+        SQLiteDatabase db= this.getReadableDatabase();
+        Cursor cursor= db.rawQuery(" SELECT Id From user where Id =?",new String[]{id});
+        return cursor;
+    }
+
 
 
 

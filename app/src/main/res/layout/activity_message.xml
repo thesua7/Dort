@@ -15,30 +15,31 @@
         <EditText
             android:id="@+id/usey"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="match_parent"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="0dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
             android:layout_marginRight="10dp"
-            android:background="#B7E8A2"
+            android:layout_marginBottom="0dp"
+            android:autofillHints=""
+            android:background="#009688"
             android:gravity="center"
             android:hint="@string/message_asa"
-            android:textColor="#000"
-            android:textColorHint="#29CC1F"
-            android:textSize="20sp"
-            tools:ignore="TextContrastCheck"
             android:inputType="textPersonName"
-            android:autofillHints=""/>
+            android:textColor="#000"
+            android:textColorHint="@color/teal_200"
+            android:textSize="20sp"
+            tools:ignore="TextContrastCheck" />
     </RelativeLayout>
 
     <ListView
         android:id="@+id/lvConversation"
 
-        android:background="@color/teal_700"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/form"
@@ -47,6 +48,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="61dp"
         android:layout_marginRight="10dp"
+        android:background="@color/white"
         android:divider="@null"
         android:dividerHeight="0dp"
         android:paddingBottom="10dp"
@@ -56,15 +58,15 @@
         android:id="@+id/form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="false"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
 
         android:background="#91f1f1f1"
         android:orientation="horizontal"
 
-        android:paddingBottom="2dp" >
+        android:paddingBottom="2dp">
 
 
         <EditText
@@ -72,16 +74,16 @@
             android:layout_width="335dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
             android:autofillHints=""
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/btnSendMsg"
             android:layout_width="75dp"
             android:layout_height="50dp"
             android:layout_marginEnd="5dp"
-            android:backgroundTint="#29CC1F"
+            android:backgroundTint="#009688"
             android:text="@string/sendx"
             android:textColor="#fff"
             tools:ignore="TextContrastCheck" />
