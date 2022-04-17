@@ -2,6 +2,7 @@ package si.nsu.dort;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -35,6 +36,7 @@ public class Message extends AppCompatActivity {
     ListView lvDiscussion;
     ArrayList<String> listConversation = new ArrayList<String>();
     ArrayAdapter arrayAdpt;
+    Button video_call;
 
     String UserName, user_msg_key;
     String temp;
@@ -52,6 +54,8 @@ public class Message extends AppCompatActivity {
 
         prf = getSharedPreferences("user_details",MODE_PRIVATE);
         String session_id = prf.getString("id",null);
+
+        video_call = findViewById(R.id.video_btn);
 
 
         UserName = session_id;
@@ -74,6 +78,13 @@ public class Message extends AppCompatActivity {
         dbr = FirebaseDatabase.getInstance().getReference();
 
 
+        video_call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),VideoCallActivity.class);
+                startActivity(intent);
+            }
+        });
         btnSendMsg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
