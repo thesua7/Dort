@@ -35,6 +35,7 @@ public class feedActivity extends AppCompatActivity {
     private CardStackAdapter adapter;
     SharedPreferences prf;
     SharedPreferences pref_Match;
+    String session_id;
 
     List<ItemModel> MainArray;
     static int match_token=0;
@@ -52,7 +53,7 @@ public class feedActivity extends AppCompatActivity {
 
 
         prf = getSharedPreferences("user_details",MODE_PRIVATE);
-        String session_id = prf.getString("id",null);
+         session_id = prf.getString("id",null);
 
         Log.d("Session",session_id);
 
@@ -232,7 +233,7 @@ public class feedActivity extends AppCompatActivity {
 
         //Get and set General Info
 
-        Cursor cursor= db.getAllInfo();
+        Cursor cursor= db.getAllInfoExceptUserbyId(session_id);
 
         StringBuilder stringBuilder= new StringBuilder();
 

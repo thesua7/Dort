@@ -178,6 +178,14 @@ public class DBhelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor getAllInfoExceptUserbyId(String id)
+    {
+
+        SQLiteDatabase db= this.getReadableDatabase();
+        Cursor cursor= db.rawQuery(" SELECT Name, Id, Sex, Bio From user WHERE Id!=?",new String[]{id});
+        return cursor;
+    }
+
 
     public Cursor getAllInfo()
     {
